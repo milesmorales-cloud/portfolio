@@ -1,3 +1,5 @@
+import useRevealOnScroll from '../hooks/useRevealOnScroll'
+
 const contacts = [
   {
     label: 'GitHub',
@@ -26,10 +28,15 @@ const contacts = [
 ]
 
 function Contact() {
+  const { ref, isRevealed } = useRevealOnScroll<HTMLElement>()
+
   return (
     <section
       id="contact"
-      className="scroll-mt-24 px-6 py-24 lg:py-32"
+      ref={ref}
+      className={`reveal scroll-mt-24 px-6 py-24 lg:py-32 ${
+        isRevealed ? 'is-revealed' : ''
+      }`}
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">

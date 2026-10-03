@@ -1,8 +1,17 @@
+import type { CSSProperties } from 'react'
 import SystemNode from './SystemNode'
 
-function SystemFlow() {
+type SystemFlowProps = {
+  className?: string
+  style?: CSSProperties
+}
+
+function SystemFlow({ className, style }: SystemFlowProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-(--color-surface) p-6">
+    <div
+      className={`relative overflow-hidden rounded-2xl border border-white/10 bg-(--color-surface) p-6 ${className ?? ''}`}
+      style={style}
+    >
       <div className="mb-6 flex items-center justify-between">
         <div>
           <span className="font-mono text-xs uppercase tracking-wider text-(--color-muted)">
@@ -23,43 +32,50 @@ function SystemFlow() {
         </span>
       </div>
 
-      <div className="space-y-3">
-        <SystemNode
-          stage="01"
-          title="Source Code"
-          technologies="React · TypeScript · Git"
-        />
+      <div className="relative">
+        <div className="space-y-3">
+          <SystemNode
+            stage="01"
+            title="Source Code"
+            technologies="React · TypeScript · Git"
+          />
 
-        <div
-          className="flex h-5 items-center justify-center"
-          aria-hidden="true"
-        >
-          <span className="font-mono text-sm text-(--color-accent)">
-            ↓
-          </span>
+          <div
+            className="flex h-5 items-center justify-center"
+            aria-hidden="true"
+          >
+            <span className="font-mono text-sm text-(--color-accent)">
+              ↓
+            </span>
+          </div>
+
+          <SystemNode
+            stage="02"
+            title="Container"
+            technologies="Docker · CI/CD"
+          />
+
+          <div
+            className="flex h-5 items-center justify-center"
+            aria-hidden="true"
+          >
+            <span className="font-mono text-sm text-(--color-accent)">
+              ↓
+            </span>
+          </div>
+
+          <SystemNode
+            stage="03"
+            title="Cloud"
+            technologies="AWS · Infrastructure"
+            active
+          />
         </div>
 
-        <SystemNode
-          stage="02"
-          title="Container"
-          technologies="Docker · CI/CD"
-        />
-
-        <div
-          className="flex h-5 items-center justify-center"
-          aria-hidden="true"
-        >
-          <span className="font-mono text-sm text-(--color-accent)">
-            ↓
-          </span>
-        </div>
-
-        <SystemNode
-          stage="03"
-          title="Cloud"
-          technologies="AWS · Infrastructure"
-          active
-        />
+        <span className="flow-signal" aria-hidden="true">
+          <span className="flow-signal-trail" />
+          <span className="flow-signal-dot" />
+        </span>
       </div>
 
       <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">

@@ -1,3 +1,5 @@
+import useRevealOnScroll from '../hooks/useRevealOnScroll'
+
 const skillGroups = [
   {
     category: 'Development',
@@ -22,10 +24,15 @@ const skillGroups = [
 ]
 
 function Skills() {
+  const { ref, isRevealed } = useRevealOnScroll<HTMLElement>()
+
   return (
     <section
       id="skills"
-      className="scroll-mt-24 border-b border-white/10 px-6 py-24 lg:py-32"
+      ref={ref}
+      className={`reveal scroll-mt-24 border-b border-white/10 px-6 py-24 lg:py-32 ${
+        isRevealed ? 'is-revealed' : ''
+      }`}
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12">

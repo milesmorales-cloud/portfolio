@@ -6,7 +6,15 @@ function Navbar() {
           href="#home"
           className="font-mono text-sm font-semibold tracking-wide text-(var(--color-text))"
         >
-          ISRAEL<span className="text-(var(--color-accent))">.</span>
+          <span
+            className="text-(var(--color-accent))"
+            aria-hidden="true"
+          >
+            &gt;_
+          </span>
+          {' '}
+          ISRAEL
+          <span className="text-(var(--color-accent))">.</span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

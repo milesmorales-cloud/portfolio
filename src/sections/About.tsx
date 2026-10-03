@@ -1,8 +1,15 @@
+import useRevealOnScroll from '../hooks/useRevealOnScroll'
+
 function About() {
+  const { ref, isRevealed } = useRevealOnScroll<HTMLElement>()
+
   return (
     <section
       id="about"
-      className="scroll-mt-24 border-b border-white/10 px-6 py-24 lg:py-32"
+      ref={ref}
+      className={`reveal scroll-mt-24 border-b border-white/10 px-6 py-24 lg:py-32 ${
+        isRevealed ? 'is-revealed' : ''
+      }`}
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
